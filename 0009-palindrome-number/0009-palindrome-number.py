@@ -1,5 +1,7 @@
 class Solution:
     def isPalindrome(self, x: int) -> bool:
+        if x < 0:
+            return False
         digits = list()
         y = x
         while x / 10 > 0:
@@ -7,18 +9,11 @@ class Solution:
             x = x // 10
             digits.append(last_digit)
         
-
         
-        initial = pow(10, len(digits) - 1)
-        sum = 0
-        for item in digits:
-            sum += int(item * initial)
-            initial /= 10
-        if sum == y:
-            return True
-        else:
-            return False
-
-        
+        for i in range (0, len(digits)//2, 1):
+            last = len(digits) -i -1
+            if digits[i] != digits[last]:
+                return False
+        return True
             
 
